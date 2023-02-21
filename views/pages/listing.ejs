@@ -29,6 +29,8 @@
                         <td><%= p.id %></td>
                         <td><%= p.name %></td>
                         <td><%= p.platform %></td>
+                        <td><%= p.created.fromNow() %></td>
+                        <td><%= p.modified.fromNow() %></td>
                     </tr>
                 <% }) %>
             </tbody>
