@@ -24,17 +24,63 @@
                 </tr>
             </thead>
             <tbody>
-                <% posts.forEach( (p) => { %>
+                <% posts.forEach( (p)=> { %>
                     <tr>
-                        <td><%= p.id %></td>
-                        <td><%= p.name %></td>
-                        <td><%= p.platform %></td>
-                        <td><%= p.created.fromNow() %></td>
-                        <td><%= p.modified.fromNow() %></td>
+                        <td>
+                            <%= p.id %>
+                        </td>
+                        <td>
+                            <%= p.name %>
+                        </td>
+                        <td>
+                            <%= p.platform %>
+                        </td>
+                        <td>
+                            <%= p.created.fromNow() %>
+                        </td>
+                        <td>
+                            <%= p.modified.fromNow() %>
+                        </td>
                     </tr>
-                <% }) %>
+                    <% }) %>
             </tbody>
         </table>
+        <form action="/addgame" method="post">
+            <p>
+                <input type="text" name="name" placeholder="Nom du jeu">
+            </p>
+            <p>Platforme :</p>
+            <ul>
+                <li>
+                    <input type="checkbox" name="platforms" value="PC" id="pc">
+                    <label for="pc">PC</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="platforms" value="PS4" id="PS4">
+                    <label for="PS4">PS4</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="platforms" value="PS5" id="PS5">
+                    <label for="PS5">PS5</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="platforms" value="XBOX" id="XBOX">
+                    <label for="XBOX">XBOX</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="platforms" value="Switch" id="Switch">
+                    <label for="Switch">Switch</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="platforms" value="Autre" id="autre">
+                    <label for="autre">Autre</label>
+                </li>
+
+            </ul>
+            <p>
+                <button type="submit">Go</button>
+            </p>
+        </form>
 </body>
 
 </html>

@@ -5,7 +5,7 @@ let db = mysql.createConnection({
 
     host: '127.0.0.1',
     user: 'endrick',
-    password: '',
+    password: 'Losange+971',
     database: 'videoGame'
 })
 

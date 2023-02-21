@@ -35,5 +35,11 @@ class Game {
                 callback(results.map((data) => new Game(data)));
             })
     }
+    static create(name,platform,callback){
+        db.query('INSERT INTO videogame (name, platform) VALUES (?, ?)', [name, platform], (error, results) =>{
+            callback(results)
+        })
+        
+    }
 }
 module.exports = Game

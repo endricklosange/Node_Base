@@ -51,19 +51,43 @@ app.post('/form', (req, res) => {
 
   res.render('pages/form', { formContent: req.body.content })
 })
+
+
+
 app.get('/games', (req, res) => {
 
   Game.all((retour) => {
-    console.log(retour)
-    res.render('pages/listing', {posts: retour })
+    // console.log(retour)
+    res.render('pages/listing', { posts: retour })
   })
-  
+
+})
+app.post('/addgame', (req, res) => {
+  console.log(req.body);
+  //sécurité
+  if (req.body.name === undefined || req.body.name === '') {
+    console.log('name vide')
+    res.redirect('/games')
+  } else {
+    let p = null;
+    if (req.body.platforms !== undefined) {
+      if (Array.isArray(req.body.platforms)) {
+        p = req.body.platforms.join(', ')
+      } else {
+        p = req.body.platforms
+      }
+    }
+    Game.create(req.body.name, p, () => {
+      console.log('ok')
+      res.redirect('/games')
+    })
+  }
+  //res.send('end');
 })
 app.get('/*', (req, res) => {
   //pour toute autre route, on redirige vers /nonvalide
   res.redirect('nonvalide')
 })
 
-
 //port
-app.listen(8888)
+app.listen(8010)
